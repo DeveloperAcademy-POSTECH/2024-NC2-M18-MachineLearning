@@ -6,6 +6,8 @@ class MainViewModel: NSObject, ObservableObject {
     @Published var actionLabel: String = "Starting Up"
     @Published var confidenceLabel: String = "Observing..."
     @Published var showSummary: Bool = false
+    
+//    @Published var poses: [Pose]? = nil  // 포즈 정보를 저장하는 프로퍼티
 
     private var videoCapture: VideoCapture!
     private var videoProcessingChain: VideoProcessingChain!
@@ -58,6 +60,11 @@ extension MainViewModel: VideoProcessingChainDelegate {
 
     func videoProcessingChain(_ chain: VideoProcessingChain, didDetect poses: [Pose]?, in frame: CGImage) {
         // Process and display the poses if needed
+        
+//        DispatchQueue.main.async {
+//                    self.poses = poses  // 포즈 정보를 업데이트
+//        }
+        
     }
 
     private func addFrameCount(_ frameCount: Int, to actionLabel: String) {

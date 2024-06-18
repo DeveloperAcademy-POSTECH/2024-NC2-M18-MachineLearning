@@ -38,6 +38,7 @@
 		BFF38EF22C2182B100130A35 /* PerformanceReporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF38EF12C2182B100130A35 /* PerformanceReporter.swift */; };
 		BFF38EF42C21889C00130A35 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF38EF32C21889C00130A35 /* MainViewModel.swift */; };
 		BFF38EF72C2188DF00130A35 /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF38EF62C2188DF00130A35 /* SummaryView.swift */; };
+		BFF38EF92C218E7F00130A35 /* PoseOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF38EF82C218E7F00130A35 /* PoseOverlayView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,6 +74,7 @@
 		BFF38EF12C2182B100130A35 /* PerformanceReporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformanceReporter.swift; sourceTree = "<group>"; };
 		BFF38EF32C21889C00130A35 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		BFF38EF62C2188DF00130A35 /* SummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryView.swift; sourceTree = "<group>"; };
+		BFF38EF82C218E7F00130A35 /* PoseOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoseOverlayView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -208,6 +210,7 @@
 				BFF38EC32C2130BE00130A35 /* CameraManager.swift */,
 				BFF38EC52C21317200130A35 /* CameraViewManager.swift */,
 				BFF38EF62C2188DF00130A35 /* SummaryView.swift */,
+				BFF38EF82C218E7F00130A35 /* PoseOverlayView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -302,6 +305,7 @@
 				BFF38EC22C212FC600130A35 /* CameraPreviewView.swift in Sources */,
 				BFF38ED72C2180DC00130A35 /* Pose.swift in Sources */,
 				BFF38ED92C2180F500130A35 /* Pose+Landmark.swift in Sources */,
+				BFF38EF92C218E7F00130A35 /* PoseOverlayView.swift in Sources */,
 				BF7253D12C1FDE2000098794 /* ContentView.swift in Sources */,
 				BFF38ECF2C2171EF00130A35 /* AVCaptureVideoDataOutput+PixelFormat.swift in Sources */,
 				BFF38EED2C21823000130A35 /* VideoProcessingChain.swift in Sources */,

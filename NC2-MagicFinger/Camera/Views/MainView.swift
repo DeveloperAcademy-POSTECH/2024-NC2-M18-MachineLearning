@@ -7,6 +7,11 @@ struct MainView: View {
         ZStack {
             CameraPreviewView(session: viewModel.captureSession)
                 .ignoresSafeArea()
+            
+//            if let poses = viewModel.poses {
+//                PoseOverlayView(poses: poses)
+//                    .frame(maxWidth: 100, maxHeight: 100)
+//            }
 
             VStack {
                 HStack {
