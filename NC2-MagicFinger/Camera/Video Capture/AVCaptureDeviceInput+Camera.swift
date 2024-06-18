@@ -1,10 +1,3 @@
-//
-//  AVCaptureDeviceInput+Camera.swift
-//  NC2-MagicFinger
-//
-//  Created by Chang Jonghyeon on 6/18/24.
-//
-
 import AVFoundation
 
 extension AVCaptureDeviceInput {

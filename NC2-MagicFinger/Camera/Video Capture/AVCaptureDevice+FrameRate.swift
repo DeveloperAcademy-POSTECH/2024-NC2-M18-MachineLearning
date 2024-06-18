@@ -1,10 +1,3 @@
-//
-//  AVCaptureDevice+FrameRate.swift
-//  NC2-MagicFinger
-//
-//  Created by Chang Jonghyeon on 6/18/24.
-//
-
 import AVFoundation
 
 extension AVCaptureDevice {
@@ -26,4 +19,3 @@ extension AVCaptureDevice {
         return true
     }
 }
-

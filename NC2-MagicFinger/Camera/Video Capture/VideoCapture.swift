@@ -1,10 +1,3 @@
-//
-//  VideoCapture.swift
-//  NC2-MagicFinger
-//
-//  Created by Chang Jonghyeon on 6/18/24.
-//
-
 import UIKit
 import Combine
 import AVFoundation
@@ -25,6 +18,10 @@ class VideoCapture: NSObject {
         didSet { isEnabled ? enableCaptureSession() : disableCaptureSession() }
     }
 
+    var captureSession: AVCaptureSession {
+        return self.session
+    }
+
     private var cameraPosition = AVCaptureDevice.Position.front {
         didSet { createVideoFramePublisher() }
     }
@@ -33,7 +30,7 @@ class VideoCapture: NSObject {
         didSet { createVideoFramePublisher() }
     }
 
-    private let captureSession = AVCaptureSession()
+    private let session = AVCaptureSession()
     private var framePublisher: PassthroughSubject<Frame, Never>?
     private let videoCaptureQueue = DispatchQueue(label: "Video Capture Queue", qos: .userInitiated)
     private var videoStabilizationEnabled = false
@@ -60,16 +57,16 @@ class VideoCapture: NSObject {
 
     private func enableCaptureSession() {
         videoCaptureQueue.async {
-            if !self.captureSession.isRunning {
-                self.captureSession.startRunning()
+            if !self.session.isRunning {
+                self.session.startRunning()
             }
         }
     }
 
     private func disableCaptureSession() {
         videoCaptureQueue.async {
-            if self.captureSession.isRunning {
-                self.captureSession.stopRunning()
+            if self.session.isRunning {
+                self.session.stopRunning()
             }
         }
     }
@@ -95,8 +92,8 @@ extension VideoCapture {
         disableCaptureSession()
         guard isEnabled else { return nil }
         defer { enableCaptureSession() }
-        captureSession.beginConfiguration()
-        defer { captureSession.commitConfiguration() }
+        session.beginConfiguration()
+        defer { session.commitConfiguration() }
 
         let modelFrameRate = 30.0
         let input = AVCaptureDeviceInput.createCameraInput(position: cameraPosition, frameRate: modelFrameRate)
@@ -108,12 +105,12 @@ extension VideoCapture {
 
     private func configureCaptureConnection(_ input: AVCaptureDeviceInput?, _ output: AVCaptureVideoDataOutput?) -> Bool {
         guard let input = input, let output = output else { return false }
-        captureSession.inputs.forEach(captureSession.removeInput)
-        captureSession.outputs.forEach(captureSession.removeOutput)
-        guard captureSession.canAddInput(input), captureSession.canAddOutput(output) else { return false }
-        captureSession.addInput(input)
-        captureSession.addOutput(output)
-        guard let connection = captureSession.connections.first else { return false }
+        session.inputs.forEach(session.removeInput)
+        session.outputs.forEach(session.removeOutput)
+        guard session.canAddInput(input), session.canAddOutput(output) else { return false }
+        session.addInput(input)
+        session.addOutput(output)
+        guard let connection = session.connections.first else { return false }
 
         if connection.isVideoOrientationSupported {
             connection.videoOrientation = orientation
