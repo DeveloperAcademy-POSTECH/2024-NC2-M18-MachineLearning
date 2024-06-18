@@ -10,28 +10,46 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         VStack {
-            Text("INFO")
-                .font(.system(size: 45, weight: .bold, design: .default))// 텍스트 크기 설정
+            Text("Magics")
+                .font(.system(size: 55, weight: .bold, design: .default))// 텍스트 크기 설정
                 .foregroundColor(.white)
                 .frame(maxWidth: .infinity, alignment: .leading)
             // 왼쪽 정렬
-                .padding(15)
+                .padding(.horizontal , 25)
+//                .padding(.vertical, 10)
             Spacer()
             CarrocelView()
             Button(action: {
                             print("Button tapped!")
                         }){
                             Text("START")
-                                .padding(30)
+                                .padding(10)
                                 .frame(maxWidth: .infinity)
-                                .background(Color.red)
+                                .background(Color(red:252/255, green:91/255, blue:63/255))
                                 .foregroundColor(.white)
+                                .font(.system(size: 40, weight: .bold, design: .default))
                                 .cornerRadius(10)
                         }
-                        .padding(.horizontal, 15) // 선택 사항: 좌우 여백 추가
-            Color.black // 배경색 설정
-                            .edgesIgnoringSafeArea(.all)
-                        .padding()
+                        .padding(.horizontal, 25)
+                        .padding(.top, 15)
+                        Color.black
+                        .edgesIgnoringSafeArea(.all)
+
+
+                VStack{
+                    Text("Notice: This video will never")
+                    Text("be saved and is solely for")
+                    Text("capturing hand motions.")
+                }
+                .font(.system(size: 20, weight: .bold, design: .default)) // 텍스트 크기 줄이기
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+//                .background(Color.gray)
+                .cornerRadius(10)
+                .foregroundColor(.white)
+                .padding(.horizontal, 30)
+                .padding(.bottom, 30)
+
+
 
         }
         .background(Color.black)

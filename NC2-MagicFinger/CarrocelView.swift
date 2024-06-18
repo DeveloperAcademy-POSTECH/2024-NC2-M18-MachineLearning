@@ -51,7 +51,22 @@ struct CarouselView<Content: View>: View {
                 )
             }
             .frame(height: 400)
+            
+            HStack(spacing: 8) {
+                ForEach(0..<items.count, id: \.self) { index in
+                    Circle()
+                        .fill(index == currentIndex ? Color.white : Color.gray)
+                        .frame(width: 10, height: 10)
+                }
+            }
+            .padding(.top, 10)
         }
+    }
+}
+
+struct CarouselView_Previews: PreviewProvider {
+    static var previews: some View {
+        CarrocelView()
     }
 }
 
@@ -70,9 +85,4 @@ struct CarrocelView: View {
         .padding()
     }
 }
-
-#Preview {
-    CarrocelView()
-}
-
 
