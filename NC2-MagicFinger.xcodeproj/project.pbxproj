@@ -17,6 +17,10 @@
 		BFF38EC22C212FC600130A35 /* CameraPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF38EC12C212FC600130A35 /* CameraPreviewView.swift */; };
 		BFF38EC42C2130BE00130A35 /* CameraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF38EC32C2130BE00130A35 /* CameraManager.swift */; };
 		BFF38EC62C21317200130A35 /* CameraViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF38EC52C21317200130A35 /* CameraViewManager.swift */; };
+		BFF38EC92C21700700130A35 /* VideoCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF38EC82C21700700130A35 /* VideoCapture.swift */; };
+		BFF38ECB2C21718E00130A35 /* AVCaptureDevice+FrameRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF38ECA2C21718E00130A35 /* AVCaptureDevice+FrameRate.swift */; };
+		BFF38ECD2C2171D200130A35 /* AVCaptureDeviceInput+Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF38ECC2C2171D200130A35 /* AVCaptureDeviceInput+Camera.swift */; };
+		BFF38ECF2C2171EF00130A35 /* AVCaptureVideoDataOutput+PixelFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF38ECE2C2171EF00130A35 /* AVCaptureVideoDataOutput+PixelFormat.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +35,10 @@
 		BFF38EC12C212FC600130A35 /* CameraPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreviewView.swift; sourceTree = "<group>"; };
 		BFF38EC32C2130BE00130A35 /* CameraManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraManager.swift; sourceTree = "<group>"; };
 		BFF38EC52C21317200130A35 /* CameraViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewManager.swift; sourceTree = "<group>"; };
+		BFF38EC82C21700700130A35 /* VideoCapture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCapture.swift; sourceTree = "<group>"; };
+		BFF38ECA2C21718E00130A35 /* AVCaptureDevice+FrameRate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVCaptureDevice+FrameRate.swift"; sourceTree = "<group>"; };
+		BFF38ECC2C2171D200130A35 /* AVCaptureDeviceInput+Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVCaptureDeviceInput+Camera.swift"; sourceTree = "<group>"; };
+		BFF38ECE2C2171EF00130A35 /* AVCaptureVideoDataOutput+PixelFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVCaptureVideoDataOutput+PixelFormat.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,12 +93,24 @@
 		BFF38EBE2C212CC100130A35 /* Camera */ = {
 			isa = PBXGroup;
 			children = (
+				BFF38EC72C216FDF00130A35 /* Video Capture */,
 				BFF38EBF2C212D5A00130A35 /* CameraTestView.swift */,
 				BFF38EC12C212FC600130A35 /* CameraPreviewView.swift */,
 				BFF38EC32C2130BE00130A35 /* CameraManager.swift */,
 				BFF38EC52C21317200130A35 /* CameraViewManager.swift */,
 			);
 			path = Camera;
+			sourceTree = "<group>";
+		};
+		BFF38EC72C216FDF00130A35 /* Video Capture */ = {
+			isa = PBXGroup;
+			children = (
+				BFF38EC82C21700700130A35 /* VideoCapture.swift */,
+				BFF38ECA2C21718E00130A35 /* AVCaptureDevice+FrameRate.swift */,
+				BFF38ECC2C2171D200130A35 /* AVCaptureDeviceInput+Camera.swift */,
+				BFF38ECE2C2171EF00130A35 /* AVCaptureVideoDataOutput+PixelFormat.swift */,
+			);
+			path = "Video Capture";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -167,10 +187,14 @@
 				BFF38EC62C21317200130A35 /* CameraViewManager.swift in Sources */,
 				BFF38EC42C2130BE00130A35 /* CameraManager.swift in Sources */,
 				25C836152C204AA300ABC255 /* SplashView.swift in Sources */,
+				BFF38EC92C21700700130A35 /* VideoCapture.swift in Sources */,
+				BFF38ECD2C2171D200130A35 /* AVCaptureDeviceInput+Camera.swift in Sources */,
 				BFF38EC22C212FC600130A35 /* CameraPreviewView.swift in Sources */,
 				BF7253D12C1FDE2000098794 /* ContentView.swift in Sources */,
+				BFF38ECF2C2171EF00130A35 /* AVCaptureVideoDataOutput+PixelFormat.swift in Sources */,
 				BFF38EC02C212D5A00130A35 /* CameraTestView.swift in Sources */,
 				BF7253CF2C1FDE2000098794 /* NC2_MagicFingerApp.swift in Sources */,
+				BFF38ECB2C21718E00130A35 /* AVCaptureDevice+FrameRate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

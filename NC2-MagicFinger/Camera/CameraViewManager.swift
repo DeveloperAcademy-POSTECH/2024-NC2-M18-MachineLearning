@@ -27,5 +27,12 @@ class CameraViewManager: ObservableObject {
         manager.requestAndCheckPermissions()
     }
     
+    func startVideoCapture() {
+            manager.startVideoCapture()
+    }
+
+    func stopVideoCapture() {
+        manager.stopVideoCapture()
+    }
     
 }

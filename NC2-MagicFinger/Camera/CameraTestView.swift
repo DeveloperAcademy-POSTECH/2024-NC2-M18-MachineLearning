@@ -9,14 +9,18 @@
 import SwiftUI
 
 struct CameraTestView: View {
-    
     @StateObject var viewManager = CameraViewManager()
-    
+
     var body: some View {
-        VStack{
+        VStack {
             viewManager.cameraPreview
                 .ignoresSafeArea()
-            
+        }
+        .onAppear {
+            viewManager.startVideoCapture()
+        }
+        .onDisappear {
+            viewManager.stopVideoCapture()
         }
     }
 }

@@ -13,9 +13,11 @@ class CameraManager: NSObject, ObservableObject {
     /// Input과 Output을 연결하는 Session
     var session = AVCaptureSession()
     
-    /// 실제 디바이스 연결을 통한 Input
-    private var videoDeviceInput: AVCaptureDeviceInput!
-    private let output = AVCapturePhotoOutput()
+//    /// 실제 디바이스 연결을 통한 Input
+//    private var videoDeviceInput: AVCaptureDeviceInput!
+//    private let output = AVCapturePhotoOutput()
+    
+    private var videoCapture: VideoCapture?
     
     
     private let sessionQueue = DispatchQueue(label: "session queue")
@@ -28,20 +30,20 @@ class CameraManager: NSObject, ObservableObject {
             
             guard let self = self else { return }
             do { // 카메라가 사용 가능하면 세션에 input과 output을 연결
-                videoDeviceInput = try AVCaptureDeviceInput(device: device)
-                addInputToSession(input: videoDeviceInput)
-                addOutputToSession(output: output)
+                let videoDeviceInput = try AVCaptureDeviceInput(device: device)
+                self.addInputToSession(input: videoDeviceInput)
+//                addOutputToSession(output: output)
                 
-                // 줌 배율 설정
-                do {
-                    try device.lockForConfiguration()
-                    device.videoZoomFactor = device.minAvailableVideoZoomFactor
-                    device.unlockForConfiguration()
-                } catch {
-                    print("Error locking configuration: \(error)")
-                }
+//                // 줌 배율 설정
+//                do {
+//                    try device.lockForConfiguration()
+//                    device.videoZoomFactor = device.minAvailableVideoZoomFactor
+//                    device.unlockForConfiguration()
+//                } catch {
+//                    print("Error locking configuration: \(error)")
+//                }
                 
-                startSession()
+                self.startSession()
             } catch {
                 print("Error setting up camera: \(error)")
             }
@@ -93,31 +95,48 @@ class CameraManager: NSObject, ObservableObject {
         }
     }
     
-    // 세션에 출력 추가
-    private func addOutputToSession(output: AVCapturePhotoOutput) {
-        if session.canAddOutput(output) {
-            session.addOutput(output)
-        } else {
-            print("Output이 추가되지 않음")
+//    // 세션에 출력 추가
+//    private func addOutputToSession(output: AVCapturePhotoOutput) {
+//        if session.canAddOutput(output) {
+//            session.addOutput(output)
+//        } else {
+//            print("Output이 추가되지 않음")
+//        }
+//    }
+    
+    func startVideoCapture() {
+            videoCapture = VideoCapture()
+            videoCapture?.delegate = self
+            videoCapture?.isEnabled = true
         }
+
+    func stopVideoCapture() {
+        videoCapture?.isEnabled = false
     }
 }
 
-// 사진 캡처 델리게이트
-extension CameraManager: AVCapturePhotoCaptureDelegate {
-    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
-        
-    }
-    
-    func photoOutput(_ output: AVCapturePhotoOutput, didFinishCaptureFor resolvedSettings: AVCaptureResolvedPhotoSettings, error: Error?) {
-        
-    }
-    
-    func photoOutput(_ output: AVCapturePhotoOutput, willCapturePhotoFor resolvedSettings: AVCaptureResolvedPhotoSettings) {
-        // AudioServicesDisposeSystemSoundID(1108)
-        
-    }
-    func photoOutput(_ output: AVCapturePhotoOutput, didCapturePhotoFor resolvedSettings: AVCaptureResolvedPhotoSettings) {
-        // AudioServicesDisposeSystemSoundID(1108)
+extension CameraManager: VideoCaptureDelegate {
+    func videoCapture(_ videoCapture: VideoCapture, didCreate framePublisher: FramePublisher) {
+        // Frame Publisher에서 프레임을 구독하여 필요한 작업 수행
     }
 }
+
+
+//// 사진 캡처 델리게이트
+//extension CameraManager: AVCapturePhotoCaptureDelegate {
+//    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
+//        
+//    }
+//    
+//    func photoOutput(_ output: AVCapturePhotoOutput, didFinishCaptureFor resolvedSettings: AVCaptureResolvedPhotoSettings, error: Error?) {
+//        
+//    }
+//    
+//    func photoOutput(_ output: AVCapturePhotoOutput, willCapturePhotoFor resolvedSettings: AVCaptureResolvedPhotoSettings) {
+//        // AudioServicesDisposeSystemSoundID(1108)
+//        
+//    }
+//    func photoOutput(_ output: AVCapturePhotoOutput, didCapturePhotoFor resolvedSettings: AVCaptureResolvedPhotoSettings) {
+//        // AudioServicesDisposeSystemSoundID(1108)
+//    }
+//}
