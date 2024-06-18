@@ -7,7 +7,6 @@
 
 
 import SwiftUI
-import SwiftData
 
 struct CameraTestView: View {
     
@@ -17,8 +16,6 @@ struct CameraTestView: View {
         VStack{
             viewManager.cameraPreview
                 .ignoresSafeArea()
-//                .frame(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
-//                .aspectRatio(1, contentMode: .fit)
             
         }
     }

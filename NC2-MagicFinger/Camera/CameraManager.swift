@@ -10,7 +10,10 @@ import AVFoundation
 
 class CameraManager: NSObject, ObservableObject {
     
+    /// Input과 Output을 연결하는 Session
     var session = AVCaptureSession()
+    
+    /// 실제 디바이스 연결을 통한 Input
     private var videoDeviceInput: AVCaptureDeviceInput!
     private let output = AVCapturePhotoOutput()
     
