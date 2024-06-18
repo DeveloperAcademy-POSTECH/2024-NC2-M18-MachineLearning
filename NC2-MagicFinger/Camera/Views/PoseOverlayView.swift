@@ -22,7 +22,7 @@ class PoseOverlayUIView: UIView {
         guard let context = UIGraphicsGetCurrentContext(), let poses = poses else {
             return
         }
-
+        
         for pose in poses {
             pose.drawWireframeToContext(context, applying: nil)
         }

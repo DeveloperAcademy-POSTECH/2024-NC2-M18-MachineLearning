@@ -72,8 +72,12 @@ class VideoCapture: NSObject {
     }
 }
 
+//😀
 extension VideoCapture: AVCaptureVideoDataOutputSampleBufferDelegate {
-    func captureOutput(_ output: AVCaptureOutput, didOutput frame: Frame, from connection: AVCaptureConnection) {
+    func captureOutput(_ output: AVCaptureOutput,
+                       didOutput frame: Frame,
+                       from connection: AVCaptureConnection) {
+        // Forward the frame through the publisher.
         framePublisher?.send(frame)
     }
 }
@@ -81,9 +85,16 @@ extension VideoCapture: AVCaptureVideoDataOutputSampleBufferDelegate {
 extension VideoCapture {
     private func createVideoFramePublisher() {
         guard let videoDataOutput = configureCaptureSession() else { return }
+        //😀
+        // Create a new passthrough subject that publishes frames to subscribers.
         let passthroughSubject = PassthroughSubject<Frame, Never>()
+        
+        // Keep a reference to the publisher.
         framePublisher = passthroughSubject
+        
+        // Set the video capture as the video output's delegate.
         videoDataOutput.setSampleBufferDelegate(self, queue: videoCaptureQueue)
+        //😀
         let genericFramePublisher = passthroughSubject.eraseToAnyPublisher()
         delegate.videoCapture(self, didCreate: genericFramePublisher)
     }
@@ -94,13 +105,16 @@ extension VideoCapture {
         defer { enableCaptureSession() }
         session.beginConfiguration()
         defer { session.commitConfiguration() }
-
+        
+        //😀
+        // Set the video camera to run at the action classifier's frame rate.
         let modelFrameRate = 30.0
         let input = AVCaptureDeviceInput.createCameraInput(position: cameraPosition, frameRate: modelFrameRate)
         let output = AVCaptureVideoDataOutput.withPixelFormatType(kCVPixelFormatType_32BGRA)
 
         let success = configureCaptureConnection(input, output)
         return success ? output : nil
+        //😀
     }
 
     private func configureCaptureConnection(_ input: AVCaptureDeviceInput?, _ output: AVCaptureVideoDataOutput?) -> Bool {
@@ -111,8 +125,10 @@ extension VideoCapture {
         session.addInput(input)
         session.addOutput(output)
         guard let connection = session.connections.first else { return false }
-
+        
+        //😀
         if connection.isVideoOrientationSupported {
+            // Set the video capture's orientation to match that of the device.
             connection.videoOrientation = orientation
         }
 
@@ -123,8 +139,10 @@ extension VideoCapture {
         if connection.isVideoStabilizationSupported {
             connection.preferredVideoStabilizationMode = videoStabilizationEnabled ? .standard : .off
         }
-
+        
+        // Discard newer frames if the app is busy with an earlier frame.
         output.alwaysDiscardsLateVideoFrames = true
         return true
+        //😀
     }
 }

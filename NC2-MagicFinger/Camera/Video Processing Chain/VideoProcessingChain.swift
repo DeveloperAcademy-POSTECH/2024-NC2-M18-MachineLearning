@@ -14,7 +14,7 @@ struct VideoProcessingChain {
     }
 
     private var frameProcessingChain: AnyCancellable?
-    private let humanBodyPoseRequest = VNDetectHumanBodyPoseRequest()
+    private let humanBodyPoseRequest = VNDetectHumanBodyPoseRequest() //😀 extract poses
     private let actionClassifier = ExerciseClassifier.shared
     private let predictionWindowSize: Int
     private let windowStride = 10
@@ -36,7 +36,9 @@ extension VideoProcessingChain {
             .map(multiArrayFromPose)
             .scan([MLMultiArray?](), gatherWindow)
             .filter(gateWindow)
+            // Make an activity prediction from the window.
             .map(predictActionWithWindow)
+            // Send the action prediction to the delegate.
             .sink(receiveValue: sendPrediction)
     }
 }
@@ -58,11 +60,21 @@ extension VideoProcessingChain {
     }
 
     private func findPosesInFrame(_ frame: CGImage) -> [Pose]? {
+        //😀
+        // Create a request handler for the image.
         let visionRequestHandler = VNImageRequestHandler(cgImage: frame)
+        
+        //😀
+        // Use Vision to find human body poses in the frame.
         do { try visionRequestHandler.perform([humanBodyPoseRequest]) } catch {
             assertionFailure("Human Pose Request failed: \(error)")
         }
+        
+        //😀
         let poses = Pose.fromObservations(humanBodyPoseRequest.results)
+//        let poses = humanBodyPoseRequest.results! as [VNRecognizedPointsObservation]
+        
+        // Send the frame and poses, if any, to the delegate on the main queue.
         DispatchQueue.main.async {
             self.delegate?.videoProcessingChain(self, didDetect: poses, in: frame)
         }
@@ -92,6 +104,7 @@ extension VideoProcessingChain {
 
     private func predictActionWithWindow(_ currentWindow: [MLMultiArray?]) -> ActionPrediction {
         var poseCount = 0
+        // Fill the nil elements with an empty pose array.
         let filledWindow: [MLMultiArray] = currentWindow.map { multiArray in
             if let multiArray = multiArray {
                 poseCount += 1
@@ -100,12 +113,18 @@ extension VideoProcessingChain {
                 return Pose.emptyPoseMultiArray
             }
         }
+        // Only use windows with at least 60% real data to make a prediction
+        // with the action classifier.
         let minimum = predictionWindowSize * 60 / 100
         guard poseCount >= minimum else {
             return ActionPrediction.noPersonPrediction
         }
+        // Merge the array window of multiarrays into one multiarray.
         let mergedWindow = MLMultiArray(concatenating: filledWindow, axis: 0, dataType: .float)
+        // Make a genuine prediction with the action classifier.
         let prediction = actionClassifier.predictActionFromWindow(mergedWindow)
+        // Return the model's prediction if the confidence is high enough.
+        // Otherwise, return a "Low Confidence" prediction.
         return checkConfidence(prediction)
     }
 
@@ -116,6 +135,7 @@ extension VideoProcessingChain {
     }
 
     private func sendPrediction(_ actionPrediction: ActionPrediction) {
+        // Send the prediction to the delegate on the main queue.
         DispatchQueue.main.async {
             self.delegate?.videoProcessingChain(self, didPredict: actionPrediction, for: windowStride)
         }
