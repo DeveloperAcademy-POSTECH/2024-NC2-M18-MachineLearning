@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		25C836132C1FE99200ABC255 /* CarrocelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C836122C1FE99200ABC255 /* CarrocelView.swift */; };
+		25C836152C204AA300ABC255 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C836142C204AA300ABC255 /* SplashView.swift */; };
 		BF7253CF2C1FDE2000098794 /* NC2_MagicFingerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7253CE2C1FDE2000098794 /* NC2_MagicFingerApp.swift */; };
 		BF7253D12C1FDE2000098794 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7253D02C1FDE2000098794 /* ContentView.swift */; };
 		BF7253D32C1FDE2200098794 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF7253D22C1FDE2200098794 /* Assets.xcassets */; };
@@ -16,6 +17,7 @@
 
 /* Begin PBXFileReference section */
 		25C836122C1FE99200ABC255 /* CarrocelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarrocelView.swift; sourceTree = "<group>"; };
+		25C836142C204AA300ABC255 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		BF7253CB2C1FDE2000098794 /* NC2-MagicFinger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NC2-MagicFinger.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF7253CE2C1FDE2000098794 /* NC2_MagicFingerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NC2_MagicFingerApp.swift; sourceTree = "<group>"; };
 		BF7253D02C1FDE2000098794 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -56,6 +58,7 @@
 				BF7253CE2C1FDE2000098794 /* NC2_MagicFingerApp.swift */,
 				BF7253D02C1FDE2000098794 /* ContentView.swift */,
 				25C836122C1FE99200ABC255 /* CarrocelView.swift */,
+				25C836142C204AA300ABC255 /* SplashView.swift */,
 				BF7253D22C1FDE2200098794 /* Assets.xcassets */,
 				BF7253D42C1FDE2200098794 /* Preview Content */,
 			);
@@ -141,6 +144,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				25C836132C1FE99200ABC255 /* CarrocelView.swift in Sources */,
+				25C836152C204AA300ABC255 /* SplashView.swift in Sources */,
 				BF7253D12C1FDE2000098794 /* ContentView.swift in Sources */,
 				BF7253CF2C1FDE2000098794 /* NC2_MagicFingerApp.swift in Sources */,
 			);
