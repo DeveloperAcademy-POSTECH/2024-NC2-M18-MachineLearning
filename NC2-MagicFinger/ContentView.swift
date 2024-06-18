@@ -57,6 +57,8 @@ struct ContentView: View {
         }
         .background(Color.black)
     }
+    
+    
     func togglePlayPause() {
         let player = MPMusicPlayerController.systemMusicPlayer
         
