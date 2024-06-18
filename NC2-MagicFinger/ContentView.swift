@@ -6,8 +6,11 @@
 //
 
 import SwiftUI
+import MediaPlayer
+import AVFoundation
 
 struct ContentView: View {
+    @State private var isPlaying = false
     var body: some View {
         VStack {
             Text("Magics")
@@ -16,13 +19,13 @@ struct ContentView: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
             // 왼쪽 정렬
                 .padding(.horizontal , 25)
-//                .padding(.vertical, 10)
+                .padding(.top, 10)
             Spacer()
             CarrocelView()
             Button(action: {
-                            print("Button tapped!")
+                togglePlayPause()
                         }){
-                            Text("START")
+                            Text(isPlaying ? "PAUSE" : "START")
                                 .padding(10)
                                 .frame(maxWidth: .infinity)
                                 .background(Color(red:252/255, green:91/255, blue:63/255))
@@ -54,8 +57,20 @@ struct ContentView: View {
         }
         .background(Color.black)
     }
-
+    func togglePlayPause() {
+        let player = MPMusicPlayerController.systemMusicPlayer
+        
+        if player.playbackState == .playing {
+            player.pause()
+            isPlaying = false
+        } else {
+            player.play()
+            isPlaying = true
+        }
+    }
+    
 }
+
 
 #Preview {
     ContentView()
