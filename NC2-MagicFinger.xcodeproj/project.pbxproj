@@ -13,6 +13,10 @@
 		BF7253D12C1FDE2000098794 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7253D02C1FDE2000098794 /* ContentView.swift */; };
 		BF7253D32C1FDE2200098794 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF7253D22C1FDE2200098794 /* Assets.xcassets */; };
 		BF7253D62C1FDE2200098794 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF7253D52C1FDE2200098794 /* Preview Assets.xcassets */; };
+		BFF38EC02C212D5A00130A35 /* CameraTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF38EBF2C212D5A00130A35 /* CameraTestView.swift */; };
+		BFF38EC22C212FC600130A35 /* CameraPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF38EC12C212FC600130A35 /* CameraPreviewView.swift */; };
+		BFF38EC42C2130BE00130A35 /* CameraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF38EC32C2130BE00130A35 /* CameraManager.swift */; };
+		BFF38EC62C21317200130A35 /* CameraViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF38EC52C21317200130A35 /* CameraViewManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +27,10 @@
 		BF7253D02C1FDE2000098794 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		BF7253D22C1FDE2200098794 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BF7253D52C1FDE2200098794 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		BFF38EBF2C212D5A00130A35 /* CameraTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraTestView.swift; sourceTree = "<group>"; };
+		BFF38EC12C212FC600130A35 /* CameraPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreviewView.swift; sourceTree = "<group>"; };
+		BFF38EC32C2130BE00130A35 /* CameraManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraManager.swift; sourceTree = "<group>"; };
+		BFF38EC52C21317200130A35 /* CameraViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +67,7 @@
 				BF7253D02C1FDE2000098794 /* ContentView.swift */,
 				25C836122C1FE99200ABC255 /* CarrocelView.swift */,
 				25C836142C204AA300ABC255 /* SplashView.swift */,
+				BFF38EBE2C212CC100130A35 /* Camera */,
 				BF7253D22C1FDE2200098794 /* Assets.xcassets */,
 				BF7253D42C1FDE2200098794 /* Preview Content */,
 			);
@@ -71,6 +80,17 @@
 				BF7253D52C1FDE2200098794 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		BFF38EBE2C212CC100130A35 /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				BFF38EBF2C212D5A00130A35 /* CameraTestView.swift */,
+				BFF38EC12C212FC600130A35 /* CameraPreviewView.swift */,
+				BFF38EC32C2130BE00130A35 /* CameraManager.swift */,
+				BFF38EC52C21317200130A35 /* CameraViewManager.swift */,
+			);
+			path = Camera;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -144,8 +164,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				25C836132C1FE99200ABC255 /* CarrocelView.swift in Sources */,
+				BFF38EC62C21317200130A35 /* CameraViewManager.swift in Sources */,
+				BFF38EC42C2130BE00130A35 /* CameraManager.swift in Sources */,
 				25C836152C204AA300ABC255 /* SplashView.swift in Sources */,
+				BFF38EC22C212FC600130A35 /* CameraPreviewView.swift in Sources */,
 				BF7253D12C1FDE2000098794 /* ContentView.swift in Sources */,
+				BFF38EC02C212D5A00130A35 /* CameraTestView.swift in Sources */,
 				BF7253CF2C1FDE2000098794 /* NC2_MagicFingerApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -280,9 +304,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"NC2-MagicFinger/Preview Content\"";
-				DEVELOPMENT_TEAM = Z7T4VLC43C;
+				DEVELOPMENT_TEAM = 8U8S6CBZ9D;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "손 동작 감지를 위해 카메라에 접근합니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -293,7 +318,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.google.chaplay;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.NC2-MagicFinger";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -309,9 +334,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"NC2-MagicFinger/Preview Content\"";
-				DEVELOPMENT_TEAM = Z7T4VLC43C;
+				DEVELOPMENT_TEAM = 8U8S6CBZ9D;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "손 동작 감지를 위해 카메라에 접근합니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -322,7 +348,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.google.chaplay;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.NC2-MagicFinger";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
