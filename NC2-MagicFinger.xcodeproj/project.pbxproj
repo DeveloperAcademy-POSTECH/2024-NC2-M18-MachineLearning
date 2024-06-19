@@ -13,32 +13,11 @@
 		BF7253D12C1FDE2000098794 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7253D02C1FDE2000098794 /* ContentView.swift */; };
 		BF7253D32C1FDE2200098794 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF7253D22C1FDE2200098794 /* Assets.xcassets */; };
 		BF7253D62C1FDE2200098794 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF7253D52C1FDE2200098794 /* Preview Assets.xcassets */; };
-		BFF38EC02C212D5A00130A35 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF38EBF2C212D5A00130A35 /* MainView.swift */; };
-		BFF38EC22C212FC600130A35 /* CameraPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF38EC12C212FC600130A35 /* CameraPreviewView.swift */; };
-		BFF38EC42C2130BE00130A35 /* CameraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF38EC32C2130BE00130A35 /* CameraManager.swift */; };
-		BFF38EC62C21317200130A35 /* CameraViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF38EC52C21317200130A35 /* CameraViewManager.swift */; };
-		BFF38EC92C21700700130A35 /* VideoCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF38EC82C21700700130A35 /* VideoCapture.swift */; };
-		BFF38ECB2C21718E00130A35 /* AVCaptureDevice+FrameRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF38ECA2C21718E00130A35 /* AVCaptureDevice+FrameRate.swift */; };
-		BFF38ECD2C2171D200130A35 /* AVCaptureDeviceInput+Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF38ECC2C2171D200130A35 /* AVCaptureDeviceInput+Camera.swift */; };
-		BFF38ECF2C2171EF00130A35 /* AVCaptureVideoDataOutput+PixelFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF38ECE2C2171EF00130A35 /* AVCaptureVideoDataOutput+PixelFormat.swift */; };
-		BFF38ED22C21809600130A35 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF38ED12C21809600130A35 /* MainViewController.swift */; };
-		BFF38ED42C2180BB00130A35 /* SummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF38ED32C2180BB00130A35 /* SummaryViewController.swift */; };
-		BFF38ED72C2180DC00130A35 /* Pose.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF38ED62C2180DC00130A35 /* Pose.swift */; };
-		BFF38ED92C2180F500130A35 /* Pose+Landmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF38ED82C2180F500130A35 /* Pose+Landmark.swift */; };
-		BFF38EDB2C21811B00130A35 /* Pose+Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF38EDA2C21811B00130A35 /* Pose+Connection.swift */; };
-		BFF38EDD2C21813700130A35 /* Pose+Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF38EDC2C21813700130A35 /* Pose+Empty.swift */; };
-		BFF38EE02C21817100130A35 /* ActionPrediction.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF38EDF2C21817100130A35 /* ActionPrediction.swift */; };
-		BFF38EE22C21819400130A35 /* ExerciseClassifier+Singleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF38EE12C21819400130A35 /* ExerciseClassifier+Singleton.swift */; };
-		BFF38EE42C2181AC00130A35 /* ExerciseClassifier+Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF38EE32C2181AC00130A35 /* ExerciseClassifier+Label.swift */; };
-		BFF38EE62C2181C300130A35 /* ExerciseClassifier+LabelCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF38EE52C2181C300130A35 /* ExerciseClassifier+LabelCheck.swift */; };
-		BFF38EE82C2181DE00130A35 /* ExerciseClassifier+PredictAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF38EE72C2181DE00130A35 /* ExerciseClassifier+PredictAction.swift */; };
-		BFF38EEA2C2181FA00130A35 /* ExerciseClassifier+FrameRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF38EE92C2181FA00130A35 /* ExerciseClassifier+FrameRate.swift */; };
-		BFF38EED2C21823000130A35 /* VideoProcessingChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF38EEC2C21823000130A35 /* VideoProcessingChain.swift */; };
-		BFF38EEF2C21827300130A35 /* ExerciseClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BFF38EEE2C21827300130A35 /* ExerciseClassifier.mlmodel */; };
-		BFF38EF22C2182B100130A35 /* PerformanceReporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF38EF12C2182B100130A35 /* PerformanceReporter.swift */; };
-		BFF38EF42C21889C00130A35 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF38EF32C21889C00130A35 /* MainViewModel.swift */; };
-		BFF38EF72C2188DF00130A35 /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF38EF62C2188DF00130A35 /* SummaryView.swift */; };
-		BFF38EF92C218E7F00130A35 /* PoseOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF38EF82C218E7F00130A35 /* PoseOverlayView.swift */; };
+		BF88111A2C235BF700D69B8D /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8811192C235BF700D69B8D /* CameraView.swift */; };
+		BF88111C2C235C2A00D69B8D /* CameraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF88111B2C235C2A00D69B8D /* CameraManager.swift */; };
+		BF88111E2C235C4800D69B8D /* CameraViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF88111D2C235C4800D69B8D /* CameraViewManager.swift */; };
+		BF8811202C235C6E00D69B8D /* CameraPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF88111F2C235C6E00D69B8D /* CameraPreviewView.swift */; };
+		BF8811242C235D8A00D69B8D /* HandActionClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BF8811232C235D8A00D69B8D /* HandActionClassifier.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,32 +28,11 @@
 		BF7253D02C1FDE2000098794 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		BF7253D22C1FDE2200098794 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BF7253D52C1FDE2200098794 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		BFF38EBF2C212D5A00130A35 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
-		BFF38EC12C212FC600130A35 /* CameraPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreviewView.swift; sourceTree = "<group>"; };
-		BFF38EC32C2130BE00130A35 /* CameraManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraManager.swift; sourceTree = "<group>"; };
-		BFF38EC52C21317200130A35 /* CameraViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewManager.swift; sourceTree = "<group>"; };
-		BFF38EC82C21700700130A35 /* VideoCapture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCapture.swift; sourceTree = "<group>"; };
-		BFF38ECA2C21718E00130A35 /* AVCaptureDevice+FrameRate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVCaptureDevice+FrameRate.swift"; sourceTree = "<group>"; };
-		BFF38ECC2C2171D200130A35 /* AVCaptureDeviceInput+Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVCaptureDeviceInput+Camera.swift"; sourceTree = "<group>"; };
-		BFF38ECE2C2171EF00130A35 /* AVCaptureVideoDataOutput+PixelFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVCaptureVideoDataOutput+PixelFormat.swift"; sourceTree = "<group>"; };
-		BFF38ED12C21809600130A35 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		BFF38ED32C2180BB00130A35 /* SummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryViewController.swift; sourceTree = "<group>"; };
-		BFF38ED62C2180DC00130A35 /* Pose.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pose.swift; sourceTree = "<group>"; };
-		BFF38ED82C2180F500130A35 /* Pose+Landmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Pose+Landmark.swift"; sourceTree = "<group>"; };
-		BFF38EDA2C21811B00130A35 /* Pose+Connection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Pose+Connection.swift"; sourceTree = "<group>"; };
-		BFF38EDC2C21813700130A35 /* Pose+Empty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Pose+Empty.swift"; sourceTree = "<group>"; };
-		BFF38EDF2C21817100130A35 /* ActionPrediction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionPrediction.swift; sourceTree = "<group>"; };
-		BFF38EE12C21819400130A35 /* ExerciseClassifier+Singleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExerciseClassifier+Singleton.swift"; sourceTree = "<group>"; };
-		BFF38EE32C2181AC00130A35 /* ExerciseClassifier+Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExerciseClassifier+Label.swift"; sourceTree = "<group>"; };
-		BFF38EE52C2181C300130A35 /* ExerciseClassifier+LabelCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExerciseClassifier+LabelCheck.swift"; sourceTree = "<group>"; };
-		BFF38EE72C2181DE00130A35 /* ExerciseClassifier+PredictAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExerciseClassifier+PredictAction.swift"; sourceTree = "<group>"; };
-		BFF38EE92C2181FA00130A35 /* ExerciseClassifier+FrameRate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExerciseClassifier+FrameRate.swift"; sourceTree = "<group>"; };
-		BFF38EEC2C21823000130A35 /* VideoProcessingChain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoProcessingChain.swift; sourceTree = "<group>"; };
-		BFF38EEE2C21827300130A35 /* ExerciseClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = ExerciseClassifier.mlmodel; sourceTree = "<group>"; };
-		BFF38EF12C2182B100130A35 /* PerformanceReporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformanceReporter.swift; sourceTree = "<group>"; };
-		BFF38EF32C21889C00130A35 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
-		BFF38EF62C2188DF00130A35 /* SummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryView.swift; sourceTree = "<group>"; };
-		BFF38EF82C218E7F00130A35 /* PoseOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoseOverlayView.swift; sourceTree = "<group>"; };
+		BF8811192C235BF700D69B8D /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
+		BF88111B2C235C2A00D69B8D /* CameraManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraManager.swift; sourceTree = "<group>"; };
+		BF88111D2C235C4800D69B8D /* CameraViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewManager.swift; sourceTree = "<group>"; };
+		BF88111F2C235C6E00D69B8D /* CameraPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreviewView.swift; sourceTree = "<group>"; };
+		BF8811232C235D8A00D69B8D /* HandActionClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = HandActionClassifier.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,7 +69,7 @@
 				BF7253D02C1FDE2000098794 /* ContentView.swift */,
 				25C836122C1FE99200ABC255 /* CarrocelView.swift */,
 				25C836142C204AA300ABC255 /* SplashView.swift */,
-				BFF38EBE2C212CC100130A35 /* Camera */,
+				BF8811182C235BC300D69B8D /* Camera+ML */,
 				BF7253D22C1FDE2200098794 /* Assets.xcassets */,
 				BF7253D42C1FDE2200098794 /* Preview Content */,
 			);
@@ -126,93 +84,16 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		BFF38EBE2C212CC100130A35 /* Camera */ = {
+		BF8811182C235BC300D69B8D /* Camera+ML */ = {
 			isa = PBXGroup;
 			children = (
-				BFF38EF02C21829800130A35 /* Utility */,
-				BFF38EEB2C21821E00130A35 /* Video Processing Chain */,
-				BFF38EDE2C21815F00130A35 /* Action Classifier */,
-				BFF38ED52C2180CD00130A35 /* Pose */,
-				BFF38ED02C21807300130A35 /* Views_UI */,
-				BFF38EC72C216FDF00130A35 /* Video Capture */,
-				BFF38EF52C2188C800130A35 /* Views */,
+				BF8811192C235BF700D69B8D /* CameraView.swift */,
+				BF88111B2C235C2A00D69B8D /* CameraManager.swift */,
+				BF88111D2C235C4800D69B8D /* CameraViewManager.swift */,
+				BF88111F2C235C6E00D69B8D /* CameraPreviewView.swift */,
+				BF8811232C235D8A00D69B8D /* HandActionClassifier.mlmodel */,
 			);
-			path = Camera;
-			sourceTree = "<group>";
-		};
-		BFF38EC72C216FDF00130A35 /* Video Capture */ = {
-			isa = PBXGroup;
-			children = (
-				BFF38EC82C21700700130A35 /* VideoCapture.swift */,
-				BFF38ECA2C21718E00130A35 /* AVCaptureDevice+FrameRate.swift */,
-				BFF38ECC2C2171D200130A35 /* AVCaptureDeviceInput+Camera.swift */,
-				BFF38ECE2C2171EF00130A35 /* AVCaptureVideoDataOutput+PixelFormat.swift */,
-			);
-			path = "Video Capture";
-			sourceTree = "<group>";
-		};
-		BFF38ED02C21807300130A35 /* Views_UI */ = {
-			isa = PBXGroup;
-			children = (
-				BFF38ED12C21809600130A35 /* MainViewController.swift */,
-				BFF38ED32C2180BB00130A35 /* SummaryViewController.swift */,
-			);
-			path = Views_UI;
-			sourceTree = "<group>";
-		};
-		BFF38ED52C2180CD00130A35 /* Pose */ = {
-			isa = PBXGroup;
-			children = (
-				BFF38ED62C2180DC00130A35 /* Pose.swift */,
-				BFF38ED82C2180F500130A35 /* Pose+Landmark.swift */,
-				BFF38EDA2C21811B00130A35 /* Pose+Connection.swift */,
-				BFF38EDC2C21813700130A35 /* Pose+Empty.swift */,
-			);
-			path = Pose;
-			sourceTree = "<group>";
-		};
-		BFF38EDE2C21815F00130A35 /* Action Classifier */ = {
-			isa = PBXGroup;
-			children = (
-				BFF38EEE2C21827300130A35 /* ExerciseClassifier.mlmodel */,
-				BFF38EDF2C21817100130A35 /* ActionPrediction.swift */,
-				BFF38EE12C21819400130A35 /* ExerciseClassifier+Singleton.swift */,
-				BFF38EE32C2181AC00130A35 /* ExerciseClassifier+Label.swift */,
-				BFF38EE52C2181C300130A35 /* ExerciseClassifier+LabelCheck.swift */,
-				BFF38EE72C2181DE00130A35 /* ExerciseClassifier+PredictAction.swift */,
-				BFF38EE92C2181FA00130A35 /* ExerciseClassifier+FrameRate.swift */,
-			);
-			path = "Action Classifier";
-			sourceTree = "<group>";
-		};
-		BFF38EEB2C21821E00130A35 /* Video Processing Chain */ = {
-			isa = PBXGroup;
-			children = (
-				BFF38EEC2C21823000130A35 /* VideoProcessingChain.swift */,
-			);
-			path = "Video Processing Chain";
-			sourceTree = "<group>";
-		};
-		BFF38EF02C21829800130A35 /* Utility */ = {
-			isa = PBXGroup;
-			children = (
-				BFF38EF12C2182B100130A35 /* PerformanceReporter.swift */,
-			);
-			path = Utility;
-			sourceTree = "<group>";
-		};
-		BFF38EF52C2188C800130A35 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				BFF38EBF2C212D5A00130A35 /* MainView.swift */,
-				BFF38EC12C212FC600130A35 /* CameraPreviewView.swift */,
-				BFF38EF32C21889C00130A35 /* MainViewModel.swift */,
-				BFF38EC32C2130BE00130A35 /* CameraManager.swift */,
-				BFF38EC52C21317200130A35 /* CameraViewManager.swift */,
-				BFF38EF62C2188DF00130A35 /* SummaryView.swift */,
-				BFF38EF82C218E7F00130A35 /* PoseOverlayView.swift */,
-			);
-			path = Views;
+			path = "Camera+ML";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -285,36 +166,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF8811202C235C6E00D69B8D /* CameraPreviewView.swift in Sources */,
 				25C836132C1FE99200ABC255 /* CarrocelView.swift in Sources */,
-				BFF38ED22C21809600130A35 /* MainViewController.swift in Sources */,
-				BFF38EC62C21317200130A35 /* CameraViewManager.swift in Sources */,
-				BFF38EC42C2130BE00130A35 /* CameraManager.swift in Sources */,
+				BF88111E2C235C4800D69B8D /* CameraViewManager.swift in Sources */,
 				25C836152C204AA300ABC255 /* SplashView.swift in Sources */,
-				BFF38ED42C2180BB00130A35 /* SummaryViewController.swift in Sources */,
-				BFF38EDB2C21811B00130A35 /* Pose+Connection.swift in Sources */,
-				BFF38EF42C21889C00130A35 /* MainViewModel.swift in Sources */,
-				BFF38EC92C21700700130A35 /* VideoCapture.swift in Sources */,
-				BFF38EE62C2181C300130A35 /* ExerciseClassifier+LabelCheck.swift in Sources */,
-				BFF38EE22C21819400130A35 /* ExerciseClassifier+Singleton.swift in Sources */,
-				BFF38EF72C2188DF00130A35 /* SummaryView.swift in Sources */,
-				BFF38ECD2C2171D200130A35 /* AVCaptureDeviceInput+Camera.swift in Sources */,
-				BFF38EE02C21817100130A35 /* ActionPrediction.swift in Sources */,
-				BFF38EEA2C2181FA00130A35 /* ExerciseClassifier+FrameRate.swift in Sources */,
-				BFF38EEF2C21827300130A35 /* ExerciseClassifier.mlmodel in Sources */,
-				BFF38EF22C2182B100130A35 /* PerformanceReporter.swift in Sources */,
-				BFF38EC22C212FC600130A35 /* CameraPreviewView.swift in Sources */,
-				BFF38ED72C2180DC00130A35 /* Pose.swift in Sources */,
-				BFF38ED92C2180F500130A35 /* Pose+Landmark.swift in Sources */,
-				BFF38EF92C218E7F00130A35 /* PoseOverlayView.swift in Sources */,
+				BF8811242C235D8A00D69B8D /* HandActionClassifier.mlmodel in Sources */,
 				BF7253D12C1FDE2000098794 /* ContentView.swift in Sources */,
-				BFF38ECF2C2171EF00130A35 /* AVCaptureVideoDataOutput+PixelFormat.swift in Sources */,
-				BFF38EED2C21823000130A35 /* VideoProcessingChain.swift in Sources */,
-				BFF38EC02C212D5A00130A35 /* MainView.swift in Sources */,
+				BF88111A2C235BF700D69B8D /* CameraView.swift in Sources */,
+				BF88111C2C235C2A00D69B8D /* CameraManager.swift in Sources */,
 				BF7253CF2C1FDE2000098794 /* NC2_MagicFingerApp.swift in Sources */,
-				BFF38EE82C2181DE00130A35 /* ExerciseClassifier+PredictAction.swift in Sources */,
-				BFF38EDD2C21813700130A35 /* Pose+Empty.swift in Sources */,
-				BFF38ECB2C21718E00130A35 /* AVCaptureDevice+FrameRate.swift in Sources */,
-				BFF38EE42C2181AC00130A35 /* ExerciseClassifier+Label.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

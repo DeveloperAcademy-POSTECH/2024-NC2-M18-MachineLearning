@@ -11,7 +11,7 @@ import SwiftUI
 struct NC2_MagicFingerApp: App {
     var body: some Scene {
         WindowGroup {
-            MainView()
+            CameraView()
         }
     }
 }

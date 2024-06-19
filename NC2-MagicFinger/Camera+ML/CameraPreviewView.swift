@@ -1,3 +1,10 @@
+//
+//  CameraPreviewView.swift
+//  testFinger
+//
+//  Created by Chang Jonghyeon on 6/19/24.
+//
+
 import SwiftUI
 import AVFoundation
 
@@ -26,5 +33,7 @@ struct CameraPreviewView: UIViewRepresentable {
         return view
     }
 
-    func updateUIView(_ uiView: VideoPreviewView, context: Context) {}
+    func updateUIView(_ uiView: VideoPreviewView, context: Context) {
+
+    }
 }
