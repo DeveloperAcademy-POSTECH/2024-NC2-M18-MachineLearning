@@ -14,8 +14,19 @@ class CameraManager: NSObject, ObservableObject {
     
     @Published var handActionLabel: String = "Starting Up"
     
-    private var poseWindow = [VNHumanHandPoseObservation?](repeating: nil, count: 60)
-    private var currentIndex = 0
+    //😀
+    private var queue = [MLMultiArray]()
+    private let queueSize = 60 // 학습 데이터 기반으로 결정
+    private var frameCounter = 0
+    private var queueSamplingCounter = 0
+    private let queueSamplingCount = 1 // 모든 프레임을 사용
+    private let handActionConfidenceThreshold: Double = 0.98 // 신뢰도 임계값
+    
+    private var isProcessing = false
+    //😀
+    
+//    private var poseWindow = [VNHumanHandPoseObservation?](repeating: nil, count: 60)
+//    private var currentIndex = 0
     
     func setUpCamera() {
         guard let device = AVCaptureDevice.default(.builtInUltraWideCamera, for: .video, position: .front) ?? AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .front) else { return }
@@ -94,6 +105,10 @@ extension CameraManager: AVCaptureVideoDataOutputSampleBufferDelegate {
             return
         }
         
+        if isProcessing {
+            return
+        }
+        
         handPoseRequest.maximumHandCount = 1
         
         let handler = VNImageRequestHandler(cvPixelBuffer: pixelBuffer, options: [:])
@@ -108,33 +123,69 @@ extension CameraManager: AVCaptureVideoDataOutputSampleBufferDelegate {
     }
     
     private func processHandPoseObservation(_ observation: VNHumanHandPoseObservation) {
-        poseWindow[currentIndex] = observation
-        currentIndex = (currentIndex + 1) % poseWindow.count
-        
-        if poseWindow.contains(where: { $0 == nil }) {
-            return
-        }
+        frameCounter += 1
         
         do {
-            let multiArray = try createMLMultiArray(from: poseWindow)
-            let input = HandActionClassifierInput(poses: multiArray)
-            let prediction = try? model.prediction(input: input)
+            let multiArray = try createMLMultiArray(from: observation)
+            queue.append(multiArray)
+            queue = Array(queue.suffix(queueSize)) // 최신 60개의 자세 유지
             
-            guard let label = prediction?.label,
-                  let confidence = prediction?.labelProbabilities[label] else { return }
-            
-            DispatchQueue.main.async {
-                self.handActionLabel = label
-                print("Detected hand action: \(label) & confidence: \(confidence)")
+            queueSamplingCounter += 1
+            if queue.count == queueSize && queueSamplingCounter % queueSamplingCount == 0 {
+                let poses = MLMultiArray(concatenating: queue, axis: 0, dataType: .float32)
+                let input = HandActionClassifierInput(poses: poses)
+                let prediction = try? model.prediction(input: input)
+                
+                guard let label = prediction?.label,
+                      let confidence = prediction?.labelProbabilities[label] else { return }
+                
+                if confidence > handActionConfidenceThreshold {
+                    isProcessing = true
+                    DispatchQueue.main.async {
+                        self.handActionLabel = label
+                        print("Detected hand action: \(label) & confidence: \(confidence)")
+                    }
+                    
+                    DispatchQueue.global().asyncAfter(deadline: .now() + 2.0) {
+                        self.isProcessing = false
+                    }
+                    
+                    
+                }
             }
-            
         } catch {
             print("Error: \(error)")
         }
+    
+    
+//    private func processHandPoseObservation(_ observation: VNHumanHandPoseObservation) {
+//        poseWindow[currentIndex] = observation
+//        currentIndex = (currentIndex + 1) % poseWindow.count
+//        
+//        if poseWindow.contains(where: { $0 == nil }) {
+//            return
+//        }
+//        
+//        do {
+//            let multiArray = try createMLMultiArray(from: poseWindow)
+//            let input = HandActionClassifierInput(poses: multiArray)
+//            let prediction = try? model.prediction(input: input)
+//            
+//            guard let label = prediction?.label,
+//                  let confidence = prediction?.labelProbabilities[label] else { return }
+//            
+//            DispatchQueue.main.async {
+//                self.handActionLabel = label
+//                print("Detected hand action: \(label) & confidence: \(confidence)")
+//            }
+//            
+//        } catch {
+//            print("Error: \(error)")
+//        }
     }
     
-    private func createMLMultiArray(from observations: [VNHumanHandPoseObservation?]) throws -> MLMultiArray {
-        let array = try MLMultiArray(shape: [60, 3, 21], dataType: .double)
+    private func createMLMultiArray(from observation: VNHumanHandPoseObservation) throws -> MLMultiArray {
+        let array = try MLMultiArray(shape: [1, 3, 21], dataType: .double)
         let pointKeys: [VNHumanHandPoseObservation.JointName] = [
             .wrist, .thumbCMC, .thumbMP, .thumbIP, .thumbTip,
             .indexMCP, .indexPIP, .indexDIP, .indexTip,
@@ -142,17 +193,38 @@ extension CameraManager: AVCaptureVideoDataOutputSampleBufferDelegate {
             .ringMCP, .ringPIP, .ringDIP, .ringTip,
             .littleMCP, .littlePIP, .littleDIP, .littleTip
         ]
-        for (frameIndex, observation) in observations.enumerated() {
-            guard let observation = observation else { continue }
-            let recognizedPoints = try observation.recognizedPoints(.all)
-            for (pointIndex, pointKey) in pointKeys.enumerated() {
-                if let recognizedPoint = recognizedPoints[pointKey] {
-                    array[[frameIndex as NSNumber, 0, pointIndex as NSNumber]] = NSNumber(value: recognizedPoint.location.x)
-                    array[[frameIndex as NSNumber, 1, pointIndex as NSNumber]] = NSNumber(value: recognizedPoint.location.y)
-                    array[[frameIndex as NSNumber, 2, pointIndex as NSNumber]] = NSNumber(value: recognizedPoint.confidence)
-                }
+        let recognizedPoints = try observation.recognizedPoints(.all)
+        for (pointIndex, pointKey) in pointKeys.enumerated() {
+            if let recognizedPoint = recognizedPoints[pointKey] {
+                array[[0, 0, pointIndex] as [NSNumber]] = NSNumber(value: recognizedPoint.location.x)
+                array[[0, 1, pointIndex] as [NSNumber]] = NSNumber(value: recognizedPoint.location.y)
+                array[[0, 2, pointIndex] as [NSNumber]] = NSNumber(value: recognizedPoint.confidence)
             }
         }
         return array
     }
+        
+        
+//    private func createMLMultiArray(from observations: [VNHumanHandPoseObservation?]) throws -> MLMultiArray {
+//        let array = try MLMultiArray(shape: [60, 3, 21], dataType: .double)
+//        let pointKeys: [VNHumanHandPoseObservation.JointName] = [
+//            .wrist, .thumbCMC, .thumbMP, .thumbIP, .thumbTip,
+//            .indexMCP, .indexPIP, .indexDIP, .indexTip,
+//            .middleMCP, .middlePIP, .middleDIP, .middleTip,
+//            .ringMCP, .ringPIP, .ringDIP, .ringTip,
+//            .littleMCP, .littlePIP, .littleDIP, .littleTip
+//        ]
+//        for (frameIndex, observation) in observations.enumerated() {
+//            guard let observation = observation else { continue }
+//            let recognizedPoints = try observation.recognizedPoints(.all)
+//            for (pointIndex, pointKey) in pointKeys.enumerated() {
+//                if let recognizedPoint = recognizedPoints[pointKey] {
+//                    array[[frameIndex as NSNumber, 0, pointIndex as NSNumber]] = NSNumber(value: recognizedPoint.location.x)
+//                    array[[frameIndex as NSNumber, 1, pointIndex as NSNumber]] = NSNumber(value: recognizedPoint.location.y)
+//                    array[[frameIndex as NSNumber, 2, pointIndex as NSNumber]] = NSNumber(value: recognizedPoint.confidence)
+//                }
+//            }
+//        }
+//        return array
+//    }
 }
