@@ -33,6 +33,7 @@
 		BF88111D2C235C4800D69B8D /* CameraViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewManager.swift; sourceTree = "<group>"; };
 		BF88111F2C235C6E00D69B8D /* CameraPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreviewView.swift; sourceTree = "<group>"; };
 		BF8811232C235D8A00D69B8D /* HandActionClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = HandActionClassifier.mlmodel; sourceTree = "<group>"; };
+		BF8811252C23C42C00D69B8D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +66,7 @@
 		BF7253CD2C1FDE2000098794 /* NC2-MagicFinger */ = {
 			isa = PBXGroup;
 			children = (
+				BF8811252C23C42C00D69B8D /* Info.plist */,
 				BF7253CE2C1FDE2000098794 /* NC2_MagicFingerApp.swift */,
 				BF7253D02C1FDE2000098794 /* ContentView.swift */,
 				25C836122C1FE99200ABC255 /* CarrocelView.swift */,
@@ -311,6 +313,7 @@
 				DEVELOPMENT_TEAM = 8U8S6CBZ9D;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "NC2-MagicFinger/Info.plist";
 				INFOPLIST_KEY_NSCameraUsageDescription = "손 동작 감지를 위해 카메라에 접근합니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -341,6 +344,7 @@
 				DEVELOPMENT_TEAM = 8U8S6CBZ9D;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "NC2-MagicFinger/Info.plist";
 				INFOPLIST_KEY_NSCameraUsageDescription = "손 동작 감지를 위해 카메라에 접근합니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
