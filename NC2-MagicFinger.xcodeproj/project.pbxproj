@@ -13,6 +13,11 @@
 		BF7253D12C1FDE2000098794 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7253D02C1FDE2000098794 /* ContentView.swift */; };
 		BF7253D32C1FDE2200098794 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF7253D22C1FDE2200098794 /* Assets.xcassets */; };
 		BF7253D62C1FDE2200098794 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF7253D52C1FDE2200098794 /* Preview Assets.xcassets */; };
+		BF88111A2C235BF700D69B8D /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8811192C235BF700D69B8D /* CameraView.swift */; };
+		BF88111C2C235C2A00D69B8D /* CameraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF88111B2C235C2A00D69B8D /* CameraManager.swift */; };
+		BF88111E2C235C4800D69B8D /* CameraViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF88111D2C235C4800D69B8D /* CameraViewManager.swift */; };
+		BF8811202C235C6E00D69B8D /* CameraPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF88111F2C235C6E00D69B8D /* CameraPreviewView.swift */; };
+		BF8811242C235D8A00D69B8D /* HandActionClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BF8811232C235D8A00D69B8D /* HandActionClassifier.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +28,11 @@
 		BF7253D02C1FDE2000098794 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		BF7253D22C1FDE2200098794 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BF7253D52C1FDE2200098794 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		BF8811192C235BF700D69B8D /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
+		BF88111B2C235C2A00D69B8D /* CameraManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraManager.swift; sourceTree = "<group>"; };
+		BF88111D2C235C4800D69B8D /* CameraViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewManager.swift; sourceTree = "<group>"; };
+		BF88111F2C235C6E00D69B8D /* CameraPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreviewView.swift; sourceTree = "<group>"; };
+		BF8811232C235D8A00D69B8D /* HandActionClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = HandActionClassifier.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +69,7 @@
 				BF7253D02C1FDE2000098794 /* ContentView.swift */,
 				25C836122C1FE99200ABC255 /* CarrocelView.swift */,
 				25C836142C204AA300ABC255 /* SplashView.swift */,
+				BF8811182C235BC300D69B8D /* Camera+ML */,
 				BF7253D22C1FDE2200098794 /* Assets.xcassets */,
 				BF7253D42C1FDE2200098794 /* Preview Content */,
 			);
@@ -71,6 +82,18 @@
 				BF7253D52C1FDE2200098794 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		BF8811182C235BC300D69B8D /* Camera+ML */ = {
+			isa = PBXGroup;
+			children = (
+				BF8811192C235BF700D69B8D /* CameraView.swift */,
+				BF88111B2C235C2A00D69B8D /* CameraManager.swift */,
+				BF88111D2C235C4800D69B8D /* CameraViewManager.swift */,
+				BF88111F2C235C6E00D69B8D /* CameraPreviewView.swift */,
+				BF8811232C235D8A00D69B8D /* HandActionClassifier.mlmodel */,
+			);
+			path = "Camera+ML";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -143,9 +166,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF8811202C235C6E00D69B8D /* CameraPreviewView.swift in Sources */,
 				25C836132C1FE99200ABC255 /* CarrocelView.swift in Sources */,
+				BF88111E2C235C4800D69B8D /* CameraViewManager.swift in Sources */,
 				25C836152C204AA300ABC255 /* SplashView.swift in Sources */,
+				BF8811242C235D8A00D69B8D /* HandActionClassifier.mlmodel in Sources */,
 				BF7253D12C1FDE2000098794 /* ContentView.swift in Sources */,
+				BF88111A2C235BF700D69B8D /* CameraView.swift in Sources */,
+				BF88111C2C235C2A00D69B8D /* CameraManager.swift in Sources */,
 				BF7253CF2C1FDE2000098794 /* NC2_MagicFingerApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -280,9 +308,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"NC2-MagicFinger/Preview Content\"";
-				DEVELOPMENT_TEAM = Z7T4VLC43C;
+				DEVELOPMENT_TEAM = 8U8S6CBZ9D;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "손 동작 감지를 위해 카메라에 접근합니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -293,7 +322,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.google.chaplay;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.NC2-MagicFinger";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -309,9 +338,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"NC2-MagicFinger/Preview Content\"";
-				DEVELOPMENT_TEAM = Z7T4VLC43C;
+				DEVELOPMENT_TEAM = 8U8S6CBZ9D;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "손 동작 감지를 위해 카메라에 접근합니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -322,7 +352,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.google.chaplay;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.NC2-MagicFinger";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

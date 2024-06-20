@@ -11,17 +11,27 @@ import AVFoundation
 
 struct ContentView: View {
     @State private var isPlaying = false
+    @State private var currentIndex: Int = 1
+    @StateObject private var viewManager = CameraViewManager()
+    
     var body: some View {
         VStack {
-            Text("Magics")
-                .font(.system(size: 55, weight: .bold, design: .default))// 텍스트 크기 설정
-                .foregroundColor(.white)
-                .frame(maxWidth: .infinity, alignment: .leading)
-            // 왼쪽 정렬
-                .padding(.horizontal , 25)
-                .padding(.top, 10)
+            HStack {
+                Text("Magics")
+                    .font(.system(size: 55, weight: .bold, design: .default))// 텍스트 크기 설정
+                    .foregroundColor(.white)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                // 왼쪽 정렬
+                    .padding(.horizontal , 25)
+                    .padding(.top, 10)
+                
+                CameraView(viewManager: viewManager)
+                    .hidden()
+            }
+
             Spacer()
-            CarrocelView()
+            
+            CarrocelView(currentIndex: $currentIndex)
             Button(action: {
                 togglePlayPause()
                         }){
@@ -56,8 +66,10 @@ struct ContentView: View {
 
         }
         .background(Color.black)
+        .onReceive(viewManager.$handActionLabel) { label in
+            updateCurrentIndex(for: label)
+        }
     }
-    
     
     func togglePlayPause() {
         let player = MPMusicPlayerController.systemMusicPlayer
@@ -68,6 +80,19 @@ struct ContentView: View {
         } else {
             player.play()
             isPlaying = true
+        }
+    }
+    
+    func updateCurrentIndex(for label: String) {
+        switch label {
+        case "VolumeUp":
+            currentIndex = 0
+        case "Pause":
+            currentIndex = 1
+        case "Next":
+            currentIndex = 2
+        default:
+            currentIndex = 1
         }
     }
     
