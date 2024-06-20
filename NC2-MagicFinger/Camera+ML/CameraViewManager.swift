@@ -1,10 +1,3 @@
-//
-//  CameraViewManager.swift
-//  testFinger
-//
-//  Created by Chang Jonghyeon on 6/19/24.
-//
-
 import SwiftUI
 import AVFoundation
 import Combine
@@ -21,7 +14,6 @@ class CameraViewManager: ObservableObject {
         cameraPreview = AnyView(
             CameraPreviewView(session: manager.session)
         )
-
         manager.$handActionLabel
             .receive(on: RunLoop.main)
             .assign(to: \.handActionLabel, on: self)
@@ -33,4 +25,5 @@ class CameraViewManager: ObservableObject {
     private func configure() {
         manager.requestAndCheckPermissions()
     }
+    
 }

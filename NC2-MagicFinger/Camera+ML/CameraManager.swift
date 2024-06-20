@@ -17,19 +17,6 @@ class CameraManager: NSObject, ObservableObject {
     private var poseWindow = [VNHumanHandPoseObservation?](repeating: nil, count: 60)
     private var currentIndex = 0
     
-//    private var previousLabel: String?
-//    private var sameLabelCount = 0
-//    private let sameLabelThreshold = 5 // 동일한 예측 결과가 연속으로 나타나는 횟수 임계값
-//    private var isProcessing = false
-    
-//    private var queue = [MLMultiArray]()
-//    private let queueSize = 60 // 학습 데이터 기반으로 결정
-//    private var frameCounter = 0
-//    private var queueSamplingCounter = 0
-//    private let queueSamplingCount = 1 // 모든 프레임을 사용
-//    private let handActionConfidenceThreshold: Double = 0.98 // 신뢰도 임계값
-    
-    
     func setUpCamera() {
         guard let device = AVCaptureDevice.default(.builtInUltraWideCamera, for: .video, position: .front) ?? AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .front) else { return }
         
@@ -107,14 +94,11 @@ extension CameraManager: AVCaptureVideoDataOutputSampleBufferDelegate {
             return
         }
         
-//        if isProcessing {
-//            return
-//        }
         handPoseRequest.maximumHandCount = 1
         
-        let handler = VNImageRequestHandler(cvPixelBuffer: pixelBuffer, options: [:]) //😀
+        let handler = VNImageRequestHandler(cvPixelBuffer: pixelBuffer, options: [:])
         do {
-            try handler.perform([handPoseRequest]) //😀
+            try handler.perform([handPoseRequest])
             if let results = handPoseRequest.results?.first {
                 processHandPoseObservation(results)
             }
@@ -124,34 +108,6 @@ extension CameraManager: AVCaptureVideoDataOutputSampleBufferDelegate {
     }
     
     private func processHandPoseObservation(_ observation: VNHumanHandPoseObservation) {
-        
-//        frameCounter += 1
-//
-//        do {
-//            let multiArray = try createMLMultiArray(from: observation)
-////            let multiArray = try observation.keypointsMultiArray()
-//            queue.append(multiArray)
-//            queue = Array(queue.suffix(queueSize)) // 최신 60개의 자세 유지
-//
-//            queueSamplingCounter += 1
-//            if queue.count == queueSize && queueSamplingCounter % queueSamplingCount == 0 {
-//                let poses = MLMultiArray(concatenating: queue, axis: 0, dataType: .float32)
-//                let input = HandActionClassifierInput(poses: poses)
-//                let prediction = try? model.prediction(input: input)
-//
-//                guard let label = prediction?.label,
-//                      let confidence = prediction?.labelProbabilities[label] else { return }
-//
-//                if confidence > handActionConfidenceThreshold {
-//                    DispatchQueue.main.async {
-//                        self.handActionLabel = label
-//                        print("Detected hand action: \(label) & confidence: \(confidence)")
-//                    }
-//                }
-//            }
-        
-        
-        
         poseWindow[currentIndex] = observation
         currentIndex = (currentIndex + 1) % poseWindow.count
         
@@ -161,76 +117,21 @@ extension CameraManager: AVCaptureVideoDataOutputSampleBufferDelegate {
         
         do {
             let multiArray = try createMLMultiArray(from: poseWindow)
-//            let multiArray = try observation.keypointsMultiArray()
             let input = HandActionClassifierInput(poses: multiArray)
             let prediction = try? model.prediction(input: input)
             
             guard let label = prediction?.label,
                   let confidence = prediction?.labelProbabilities[label] else { return }
             
-//            if label == previousLabel {
-//                sameLabelCount += 1
-//            } else {
-//                sameLabelCount = 0
-//            }
-//
-//            if sameLabelCount >= sameLabelThreshold {
-//                isProcessing = true
-//                DispatchQueue.main.async {
-//                    self.handActionLabel = label
-//                    print("Detected hand action: \(label) & confidence: \(confidence)")
-//
-//                    // 일정 시간 후에 isProcessing을 false로 설정하여 다시 감지할 수 있도록 함
-//                    DispatchQueue.global().asyncAfter(deadline: .now() + 1.0) {
-//                        self.isProcessing = false
-//                    }
-//                }
-//                sameLabelCount = 0
-//            }
-//
-//            previousLabel = label
-            
-            
             DispatchQueue.main.async {
-                self.handActionLabel = label //😀
-                print("Detected hand action: \(label) & confidence: \(confidence)") // 콘솔에 출력
+                self.handActionLabel = label
+                print("Detected hand action: \(label) & confidence: \(confidence)")
             }
-            
-            
-//            if confidence >= 1.0 {
-//                DispatchQueue.main.async {
-//                    self.handActionLabel = label //😀
-//                    print("Detected hand action: \(label) & confidence: \(confidence)") // 콘솔에 출력
-//                }
-//            }
-            
             
         } catch {
             print("Error: \(error)")
         }
     }
-    
-//    private func createMLMultiArray(from observation: VNHumanHandPoseObservation) throws -> MLMultiArray {
-//        let array = try MLMultiArray(shape: [1, 3, 21], dataType: .double)
-//        let pointKeys: [VNHumanHandPoseObservation.JointName] = [
-//            .wrist, .thumbCMC, .thumbMP, .thumbIP, .thumbTip,
-//            .indexMCP, .indexPIP, .indexDIP, .indexTip,
-//            .middleMCP, .middlePIP, .middleDIP, .middleTip,
-//            .ringMCP, .ringPIP, .ringDIP, .ringTip,
-//            .littleMCP, .littlePIP, .littleDIP, .littleTip
-//        ]
-//        let recognizedPoints = try observation.recognizedPoints(.all)
-//        for (pointIndex, pointKey) in pointKeys.enumerated() {
-//            if let recognizedPoint = recognizedPoints[pointKey] {
-//                array[[0, 0, pointIndex] as [NSNumber]] = NSNumber(value: recognizedPoint.location.x)
-//                array[[0, 1, pointIndex] as [NSNumber]] = NSNumber(value: recognizedPoint.location.y)
-//                array[[0, 2, pointIndex] as [NSNumber]] = NSNumber(value: recognizedPoint.confidence)
-//            }
-//        }
-//        return array
-//    }
-    
-    
     
     private func createMLMultiArray(from observations: [VNHumanHandPoseObservation?]) throws -> MLMultiArray {
         let array = try MLMultiArray(shape: [60, 3, 21], dataType: .double)

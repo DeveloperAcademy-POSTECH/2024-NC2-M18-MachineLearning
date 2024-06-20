@@ -4,12 +4,12 @@ struct CarouselView<Content: View>: View {
     let items: [String]
     let content: (String) -> Content
     
-    @State private var currentIndex: Int
+    @Binding private var currentIndex: Int
 
-    init(items: [String], @ViewBuilder content: @escaping (String) -> Content) {
+    init(items: [String], currentIndex: Binding<Int>, @ViewBuilder content: @escaping (String) -> Content) {
         self.items = items
+        self._currentIndex = currentIndex
         self.content = content
-        _currentIndex = State(initialValue: items.count / 2)
     }
     
     var body: some View {
@@ -64,18 +64,15 @@ struct CarouselView<Content: View>: View {
     }
 }
 
-struct CarouselView_Previews: PreviewProvider {
-    static var previews: some View {
-        CarrocelView()
-    }
-}
-
 struct CarrocelView: View {
+    
     let images = ["volume", "play", "next"]
+    @Binding var currentIndex: Int
+    
     
     var body: some View {
         
-        CarouselView(items: images) { imageName in
+        CarouselView(items: images, currentIndex: $currentIndex) { imageName in
             Image(imageName)
                 .resizable()
                 .scaledToFit()
